@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #******************************************************************************
-# Copyright 2016-2017 Intel Corporation
+# Copyright 2017 Intel Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,14 +16,9 @@
 # limitations under the License.
 #*******************************************************************************
 
+echo "------------------------------------------------------------"
+echo " MKL Convolution - generic (training, float32)"
+echo "------------------------------------------------------------"
 echo " "
-echo " Convolution benchmark"
-cd mkl_conv
-pwd
-sh ./run_mkl_conv_ia.sh
-echo " "
-cd ../libxsmm_conv
-pwd
-echo " "
-sh ./run_libxsmm_conv_ia.sh
-cd ..
+./std_conv_bench --training --f32
+

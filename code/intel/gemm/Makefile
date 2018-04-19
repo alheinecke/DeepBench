@@ -15,25 +15,29 @@
 # ******************************************************************************
 
 CC       =  icc
-CFLAGS	 =  -O2 -Wall -I$(MKLROOT)/include -openmp
-OBJS     =  sbench.o
+CFLAGS	 =  -O2 -Wall -I$(MKLROOT)/include -I../../kernels -qopenmp -std=c++11
 
 EXTRALIB = -Wl,--start-group $(MKLROOT)/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/lib/intel64/libmkl_intel_thread.a $(MKLROOT)/lib/intel64/libmkl_core.a -Wl,--end-group -liomp5 -lpthread -lm -ldl
 
 all : sbench sbench_pack
 
+ibench_s8u8s32 : ibench_s8u8s32.o
+	$(CC) $(CFLAGS) $^  $(EXTRALIB)  -o $@ 
+
+ibench_s8u8s32.o : bench.cpp ../../kernels/gemm_problems.h
+	$(CC) $(CFLAGS) -DIGEMM_S8U8S32 -c -o $@ $<
+
 sbench_pack : sbench_pack.o
 	$(CC) $(CFLAGS) $^  $(EXTRALIB)  -o $@ 
 
-sbench_pack.o : sbench.c input.h
+sbench_pack.o : bench.cpp ../../kernels/gemm_problems.h
 	$(CC) $(CFLAGS) -DPACKED_API -c -o $@ $<
-
 
 sbench : sbench.o
 	$(CC) $(CFLAGS) $^  $(EXTRALIB)  -o $@ 
 
-sbench.o : sbench.c input.h
+sbench.o : bench.cpp ../../kernels/gemm_problems.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean :
-	rm -f *.o sbench  sbench_pack
+	rm -f *.o sbench sbench_pack ibench_s8u8s32

@@ -1,5 +1,7 @@
+#!/bin/bash
+
 #******************************************************************************
-# Copyright 2016 Intel Corporation
+# Copyright 2017 Intel Corporation
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,29 +16,10 @@
 # limitations under the License.
 #*******************************************************************************
 
-#!/bin/bash
-
-echo "Please source appropriate versions of Intel Compiler (ICC), Intel MPI and  Intel MKL !"
-#source <ICC_INSTALDIR>
-#source <MKL_INSTALDIR>
-#source <IMPI_INSTALDIR>
-
-export KMP_PLACE_THREADS=1T
-export KMP_AFFINITY=compact,granularity=fine
-export OMP_NUM_THREADS=66
-
-echo " GEMM benchmark"
-make clean &> /dev/null;
-make &> /dev/null;
-echo "------------------------"
-echo "  SGEMM - "
-echo "--------------"
+echo "------------------------------------------------------------"
+echo " MKL Convolution - KNL (training, float32)"
+echo "------------------------------------------------------------"
 echo " "
-numactl -m 1 ./sbench
-echo " "
-echo "------------------------"
-echo " Packed SGEMM - "
-echo "--------------"
-echo " "
-numactl -m 1 ./sbench_pack
+numa_nodes=$(lscpu | grep 'NUMA node(s)' | awk '{print $NF}')
+numactl -m $[numa_nodes-1] ./std_conv_bench --training --f32
 
