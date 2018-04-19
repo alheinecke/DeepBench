@@ -102,6 +102,20 @@ std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
 std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
                        unsigned int, unsigned int, unsigned int,
                        unsigned int, unsigned int, unsigned int, unsigned int>> inference_server_set = {
+    std::make_tuple(3840, 2160, 3, 1, 64, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(3840, 2160, 64, 1, 64, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(1920, 1080, 64, 1, 128, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(1920, 1080, 128, 1, 128, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(960, 540, 128, 1, 256, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(960, 540, 256, 1, 256, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(960, 540, 256, 1, 256, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(480, 270, 256, 1, 512, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(480, 270, 512, 1, 512, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(480, 270, 512, 1, 512, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(240, 135, 512, 1, 512, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(240, 135, 512, 1, 512, 3, 3, 1, 1, 1, 1),
+    std::make_tuple(240, 135, 512, 1, 512, 3, 3, 1, 1, 1, 1)
+#if 0
     std::make_tuple(700, 161, 1, 1, 32, 20, 5, 0, 0, 2, 2),
     std::make_tuple(700, 161, 1, 2, 32, 20, 5, 0, 0, 2, 2),
     std::make_tuple(700, 161, 1, 4, 32, 20, 5, 0, 0, 2, 2),
@@ -209,6 +223,7 @@ std::vector<std::tuple<unsigned int, unsigned int, unsigned int, unsigned int,
     std::make_tuple(7, 7, 512, 2, 2048, 1, 1, 0, 0, 1, 1),
     std::make_tuple(14, 14, 1024, 2, 2048, 1, 1, 0, 0, 2, 2),
     std::make_tuple(7, 7, 2048, 2, 512, 1, 1, 0, 0, 1, 1)
+#endif
 };
 
 // Vector saves w, h, c, n, k, filter_w(s), filter_h(r), pad_w, pad_h, wstride, hstride
