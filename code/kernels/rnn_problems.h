@@ -1,5 +1,24 @@
 // Hidden units, batch size, timesteps, RNN cell type
 std::vector<std::tuple<int, int, int, std::string>> training_set = {
+    std::make_tuple(1024, 16, 50, "lstm"),
+    std::make_tuple(1024, 32, 50, "lstm"),
+    std::make_tuple(1024, 64, 50, "lstm"),
+    std::make_tuple(1024, 128, 50, "lstm"),
+    std::make_tuple(1024, 256, 50, "lstm"),
+    std::make_tuple(1024, 512, 50, "lstm"),
+    std::make_tuple(2048, 16, 50, "lstm"),
+    std::make_tuple(2048, 32, 50, "lstm"),
+    std::make_tuple(2048, 64, 50, "lstm"),
+    std::make_tuple(2048, 128, 50, "lstm"),
+    std::make_tuple(2048, 256, 50, "lstm"),
+    std::make_tuple(2048, 512, 50, "lstm"),
+    std::make_tuple(4096, 16, 50, "lstm"),
+    std::make_tuple(4096, 32, 50, "lstm"),
+    std::make_tuple(4096, 64, 50, "lstm"),
+    std::make_tuple(4096, 128, 50, "lstm"),
+    std::make_tuple(4096, 256, 50, "lstm"),
+    std::make_tuple(4096, 512, 50, "lstm"),
+#if 0
     std::make_tuple(1760, 16, 50, "vanilla"),
     std::make_tuple(1760, 32, 50, "vanilla"),
     std::make_tuple(1760, 64, 50, "vanilla"),
@@ -53,6 +72,7 @@ std::vector<std::tuple<int, int, int, std::string>> training_set = {
     std::make_tuple(512, 32, 1, "gru"),
     std::make_tuple(1024, 32, 1500, "gru"),
     std::make_tuple(1024, 64, 1500, "gru")
+#endif
 };
 
 // Hidden units, batch size, timesteps, RNN cell type
