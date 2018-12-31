@@ -143,7 +143,7 @@ class cudnnRNN {
             rnn_desc_ = RNNDescriptor<T>(hidden_size,
                                              1,
                                              dropout_.desc(),
-                                             CUDNN_SKIP_INPUT,
+                                             CUDNN_LINEAR_INPUT,
                                              CUDNN_UNIDIRECTIONAL,
                                              rnn_type,
                                              cudnn_handle);
